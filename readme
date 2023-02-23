@@ -1,0 +1,177 @@
+Scrimbas - Next - level JavaScript 
+ 
+Build a role - playing game part 3 - The gameplay
+
+1. Wire up the attack button
+/*
+CHALLENGE:
+1 Set up a function called attack()
+2 Wire up the attack button so when pressed, the 
+function logs out 'attack button working!'
+3 Do this without declaring any new variables
+**hint.md for help!!**
+*/
+
+
+2. Launch the first attack!
+
+/*
+CHALLENGE
+1. Make the attack button trigger a dice roll for both
+wizard and orc (which method on the constructor does that??)
+2. Make sure the new dice score shows in the app
+**hint.md for help!!**
+*/
+
+
+3. Dice placeholders
+
+/*
+CHALLENGE:
+1. Create a new function called getDicePlaceholderHtml.
+2. Make getDicePlaceholderHtml return a new array of diceCount 
+length.
+3. Each element of the array should include this
+line of HTML: `<div class="placeholder-dice"></div>`
+4. Remember to deal with the commas!
+5. Think: Where should this function live??
+*hint.md for help!!*
+*/
+
+
+4. Render placeholder dice
+
+/*
+CHALLENGE
+1. In the Character constructor, create a new 
+property called "diceArray".
+2. Set diceArray equal to whatever is returned
+by the getDicePlaceholderHtml function (think 
+what two things you need to do to make this work!!).
+3. Instead of rendering diceHtml in the getCharacterHtml 
+method, render diceArray.
+4. Delete any unnecessary code.
+*/
+
+5. Fix the dice render problem 1
+
+/*
+Challenge
+1. Add a new property called currentDiceScore to each character's 
+ data and initialise it to an empty array.
+2. Rewrite the getDiceHtml method so it updates currentDiceScore 
+ with the values returned by getDiceRollArray.
+*/
+
+
+6. Fix the dice render problem 2
+
+/*
+Challenge
+1. In the getDiceHtml method, map over currentDiceScore 
+to return this string of html template for each element:
+<div class="dice">${num}</div>`. Save this new array
+to diceArray.
+2. Modify the attack() function in index.js to get our 
+app working again.
+*/
+
+
+7. Inflicting damage
+
+/*CHALLENGE
+1. Ceate a new method inside Character called "takeDamage".
+2. For now, have the method log out the name of the damaged character
+and phrase "is damaged".
+3. In index.js, find the attack() function and call takeDamage
+for each character inside that function. 
+*/
+
+
+8. Inflicting damage 2
+
+/*CHALLENGE
+1. Think what data we need to pass to our new
+takeDamage method.
+2. Add that data as an argument each time we call
+takeDamage below.
+3. In the takeDamage method, take in the data as a 
+parameter called 'attackScoreArray' and log it out.
+**hint.md for help!** 
+*/
+
+
+9. Use .reduce() to calculate the damage
+
+/*
+CHALLENGE
+1. In the takeDamage method, use what you have just learned
+to reduce attackScoreArray to a single number.
+2. Store that number in a const called totalAttackScore
+3. Decrement the health score by totalAttackScore
+*/
+
+
+10. Stop health going negative
+
+/*
+CHALLENGE
+1. Add code to takeDamage so that when he character reaches 
+zero heath, they stay at zero health and don't drop below 
+zero.
+** hint.md for help!!**
+*/
+
+
+11. Is the character dead?
+
+/*
+CHALLENGE
+1. Add a line of code inside the body of the if statement
+in the takeDamage method which will give the character a 
+new boolean "dead" when health reaches zero. It can be initialised with "true".
+2. For now, log out that boolean when the character's 
+health reaches zero.
+*/
+
+
+12. Calling endGame()
+
+/*
+CHALLENGE
+1. Inside attack(), check if either character is dead.
+If they are, call a new function called endGame().
+2. Set up the new function endGame() and have it 
+log out "the game is over".
+*/
+
+
+13. endGame()
+
+/*CHALLENGE
+1. Inside endGame(), create a const called endMessage. 
+2. Figure out how to set endMessage to say either "The 
+Wizard Wins", "The Orc is Victorious", or "No victors - 
+all creatures are dead", depending on the health scores 
+of the characters.
+3. Log out endMessage
+*/
+
+
+14.  endGame() 2
+
+/*CHALLENGE
+1. Create a second const in endGame called endEmoji.
+2. Figure out how to set it to hold the emoji "🔮" if the 
+wizard wins, and "☠️" if the orc wins. If both characters 
+are dead use "☠️".
+3. Finally, take the html template string below render it 
+to the screen so it replaces everything else when the game 
+is over.
+`<div class="end-game">
+        <h2>Game Over</h2>
+        <h3>${endMessage}/h3>
+        <p class="end-emoji">${endEmoji}</p>
+    </div>` 
+*/
+
