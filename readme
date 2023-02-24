@@ -3,30 +3,26 @@ Scrimbas - Next - level JavaScript
 Build a role - playing game part 3 - The gameplay
 
 1. Wire up the attack button
-/*
+
 CHALLENGE:
 1 Set up a function called attack()
 2 Wire up the attack button so when pressed, the 
 function logs out 'attack button working!'
 3 Do this without declaring any new variables
 **hint.md for help!!**
-*/
 
 
 2. Launch the first attack!
 
-/*
 CHALLENGE
 1. Make the attack button trigger a dice roll for both
 wizard and orc (which method on the constructor does that??)
 2. Make sure the new dice score shows in the app
 **hint.md for help!!**
-*/
 
 
 3. Dice placeholders
 
-/*
 CHALLENGE:
 1. Create a new function called getDicePlaceholderHtml.
 2. Make getDicePlaceholderHtml return a new array of diceCount 
@@ -36,12 +32,10 @@ line of HTML: `<div class="placeholder-dice"></div>`
 4. Remember to deal with the commas!
 5. Think: Where should this function live??
 *hint.md for help!!*
-*/
 
 
 4. Render placeholder dice
 
-/*
 CHALLENGE
 1. In the Character constructor, create a new 
 property called "diceArray".
@@ -51,22 +45,19 @@ what two things you need to do to make this work!!).
 3. Instead of rendering diceHtml in the getCharacterHtml 
 method, render diceArray.
 4. Delete any unnecessary code.
-*/
+
 
 5. Fix the dice render problem 1
 
-/*
 Challenge
 1. Add a new property called currentDiceScore to each character's 
  data and initialise it to an empty array.
 2. Rewrite the getDiceHtml method so it updates currentDiceScore 
  with the values returned by getDiceRollArray.
-*/
 
 
 6. Fix the dice render problem 2
 
-/*
 Challenge
 1. In the getDiceHtml method, map over currentDiceScore 
 to return this string of html template for each element:
@@ -74,23 +65,21 @@ to return this string of html template for each element:
 to diceArray.
 2. Modify the attack() function in index.js to get our 
 app working again.
-*/
 
 
 7. Inflicting damage
 
-/*CHALLENGE
+CHALLENGE
 1. Ceate a new method inside Character called "takeDamage".
 2. For now, have the method log out the name of the damaged character
 and phrase "is damaged".
 3. In index.js, find the attack() function and call takeDamage
 for each character inside that function. 
-*/
 
 
 8. Inflicting damage 2
 
-/*CHALLENGE
+CHALLENGE
 1. Think what data we need to pass to our new
 takeDamage method.
 2. Add that data as an argument each time we call
@@ -98,69 +87,59 @@ takeDamage below.
 3. In the takeDamage method, take in the data as a 
 parameter called 'attackScoreArray' and log it out.
 **hint.md for help!** 
-*/
 
 
 9. Use .reduce() to calculate the damage
 
-/*
 CHALLENGE
 1. In the takeDamage method, use what you have just learned
 to reduce attackScoreArray to a single number.
 2. Store that number in a const called totalAttackScore
 3. Decrement the health score by totalAttackScore
-*/
 
 
 10. Stop health going negative
 
-/*
 CHALLENGE
 1. Add code to takeDamage so that when he character reaches 
 zero heath, they stay at zero health and don't drop below 
 zero.
 ** hint.md for help!!**
-*/
 
 
 11. Is the character dead?
 
-/*
 CHALLENGE
 1. Add a line of code inside the body of the if statement
 in the takeDamage method which will give the character a 
 new boolean "dead" when health reaches zero. It can be initialised with "true".
 2. For now, log out that boolean when the character's 
 health reaches zero.
-*/
 
 
 12. Calling endGame()
 
-/*
 CHALLENGE
 1. Inside attack(), check if either character is dead.
 If they are, call a new function called endGame().
 2. Set up the new function endGame() and have it 
 log out "the game is over".
-*/
 
 
 13. endGame()
 
-/*CHALLENGE
+CHALLENGE
 1. Inside endGame(), create a const called endMessage. 
 2. Figure out how to set endMessage to say either "The 
 Wizard Wins", "The Orc is Victorious", or "No victors - 
 all creatures are dead", depending on the health scores 
 of the characters.
 3. Log out endMessage
-*/
 
 
 14.  endGame() 2
 
-/*CHALLENGE
+CHALLENGE
 1. Create a second const in endGame called endEmoji.
 2. Figure out how to set it to hold the emoji "🔮" if the 
 wizard wins, and "☠️" if the orc wins. If both characters 
@@ -173,5 +152,130 @@ is over.
         <h3>${endMessage}/h3>
         <p class="end-emoji">${endEmoji}</p>
     </div>` 
-*/
 
+
+15. Using arrow functions
+
+CHALLENGE
+1. In the getDiceHtml method, there is an anonymous function 
+being used as an inline callback function. Replace it with an 
+arrow function.
+2. Do the same for the anonymous function in the takeDamage 
+method.
+3. Try to end up with the least amount of code possible!
+
+
+16. Calculate percentage health remaining
+
+Challenge
+1. Create a property called maxHealth INSIDE Character that 
+stores the maximum health a character can have.
+2. Create an arrow function called getPercentage OUTSIDE 
+Character which takes two parameters, remainingHealth and 
+maximumHealth. getPercentage should return the % of 
+maximumHealth that is remaining.
+3. To test, call getPercentage from within the takeDamage method
+and log out the result. 
+**hint.md for help!!**
+
+
+17. The health bar
+   
+CHALLENGE
+1. Set up a new method called getHealthBarHtml
+2. Create a const called "percent" and set it equals to the 
+returned value from our getPercentage function (think what 
+arguments you want to pass in).
+3. For now, just log out the value of the new const "percent". 
+4. Down in the getCharacterHtml method, set up a const
+called healthBar and set it equal to the returned value
+of the getHealthBarHtml method.
+
+
+18. Displaying the health bar
+
+CHALLENGE
+1. Instead of just logging the percent, getHealthBarHtml 
+needs to return this string of html:
+`<div class="health-bar-outer">
+    <div class="health-bar-inner *YOUR CODE HERE* " 
+        style="width: *YOUR CODE HERE* %;">
+    </div>
+</div>`
+2. You need to make some changes to that string of HTML.
+2a. If the amount of health left is 25% or lower, add the class 
+"danger" to the div with the class "health-bar-inner".
+2b. The width of that div should be the % health remaining. 
+3. Be sure to add the healthBar variable to the string of HTML
+rendered by getCharacterHtml.
+**hint.md for help!!**       
+
+
+19. Move getPercentage out of the constructor file
+
+Challenge
+1. Move getPerecentage out of the Character file.
+
+
+20. Adding more monsters 1
+
+Challenge
+1. Create a function called getNewMonster.
+2. Write logic inside the function that takes the first 
+monster from monstersArray and extracts that monster's 
+data from characterData.
+3. Save that data to a new const called nextMonsterData.
+**hint.md for help!!**
+
+
+21. Add new monster 2
+
+Challenge
+1. Make it so getNewMonster returns a new instance of Character. Think
+what argument you should be passing. If there are no more monsters in the 
+array, getNewMonster should return an empty object {}.
+2. Down near the bottom of the file, set a new variable "monster" equal 
+to our new function getNewMonster.
+3. Delete any code we no longer need.
+- The app will still be broken - don't worry for now!
+**hint.md for help!!**
+
+
+22. Back to one monster
+
+Challenge
+1. See if you can get the app to work with just 
+one monster again.
+**hint.md for help!!**
+
+
+23. When one monster dies, another appears
+
+Challenge
+1. Change the attack function so that when a monster dies, 
+the next monster replaces it. If there are no more monsters,
+call endGame(). 
+2. Make sure that endGame() still gets called if the wizard
+is killed.
+
+
+24. Improve the UX - pause time
+
+Challenge
+1. Add a pause of 1 second between a monster dying and
+another monster taking it's place.
+2. Add a pause of 1.5 seconds between the last monster 
+or the wizard dying, and the endMessage being displayed.
+
+
+25. Improve the UX - disable the button
+
+Challenge
+1. Disable the user's ability to attack when a monster dies.
+2. Reneable the user's ability to attack when a new monster
+loads.
+3. When the game is over, disable the user's ability to attack.
+**hint.md for help!!**
+
+
+26. Tidy Up
